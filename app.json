@@ -1,0 +1,12 @@
+{
+  "name": "TreinaHud",
+  "displayName": "TreinaHud",
+  "expo": {
+    "name": "TreinaHud",
+    "slug": "TreinaHud",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
