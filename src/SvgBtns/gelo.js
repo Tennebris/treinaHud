@@ -8,7 +8,7 @@ function Gelo(props) {
     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
      width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
      preserveAspectRatio="xMidYMid meet">
-    
+
     <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
     fill="#000000" stroke="none">
     <path d="M2185 4560 c-14 -16 -31 -20 -76 -20 -32 0 -61 -4 -64 -10 -3 -5 -30

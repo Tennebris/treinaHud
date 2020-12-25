@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, ImageBackground, View, Animated, PanResponder, LogBox } from 'react-native';
+import { StyleSheet, ImageBackground, View, Animated, PanResponder, Dimensions, LogBox } from 'react-native';
 import * as ScreenOrientation from 'expo-screen-orientation';
 
 import Pular from './SvgBtns/pular';
@@ -16,44 +16,55 @@ LogBox.ignoreLogs(['Animated']);
 
 const botoes = {
 		"atirar": {
-			"x": 433,
-			"y": 175
+			"show": true,
+			"x": Dimensions.get('window').width * 0.30,
+			"y": Dimensions.get('window').height * 0.28
 		},
 		"agachar": {
-			"x": 610,
-			"y": 285
+			"show": true,
+			"x": Dimensions.get('window').width * 0.40,
+			"y": Dimensions.get('window').height * 0.39
 		},
 		"pular": {
-			"x": 700,
-			"y": 165
+			"show": true,
+			"x": Dimensions.get('window').width * 0.45,
+			"y": Dimensions.get('window').height * 0.18
 		},
 		"mirar": {
-			"x": 702,
-			"y": 30
+			"show": true,
+			"x": Dimensions.get('window').width * 0.45,
+			"y": -Dimensions.get('window').height * 0.05
 		},
 		"atirarEsq": {
-			"x": -345,
-			"y": -55
+			"show": true,
+			"x": -Dimensions.get('window').width * 0.25,
+			"y": -Dimensions.get('window').height * 0.08
 		},
 		"gel": {
-			"x": -345,
-			"y": 80
+			"show": true,
+			"x": -Dimensions.get('window').width * 0.25,
+			"y": Dimensions.get('window').height * 0.15
 		},
 		"Correr": {
-			"x": -520,
-			"y": -45
+			"show": true,
+			"x": -Dimensions.get('window').width * 0.38,
+			"y": -Dimensions.get('window').height * 0.08
 		},
 		"Analogico": {
-			"x": -520,
-			"y": 250
+			"show": true,
+			"x": -Dimensions.get('window').width * 0.38,
+			"y": Dimensions.get('window').height * 0.30
 		},
 		"trocaArma": {
-			"x": -420,
-			"y": -250
+			"show": true,
+			"x": -Dimensions.get('window').width * 0.25,
+			"y": -Dimensions.get('window').height * 0.40
 		}
 	}
 
 export default function App() {
+	const {width,height} = Dimensions.get('window');
+
 	(async () => {
 		await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
 	})();
@@ -84,47 +95,47 @@ export default function App() {
 	).current;
 
 	useEffect(() => {
-		console.warn(pan)
+		// console.warn(pan)
 	},[isDraging])
 
 	return (
 		<ImageBackground style={styles.container} >
 			<StatusBar hidden={true} style="auto" />
-			<View style={{position: 'absolute',transform: [{ translateX: botoes.atirar.x }, { translateY: botoes.atirar.y }] }} >
-				<Atirar width={'180'} />
-			</View>
+			{botoes.atirar.show && <View style={{position: 'absolute',transform: [{ translateX: botoes.atirar.x }, { translateY: botoes.atirar.y }] }} >
+				<Atirar width={width * 0.11} />
+			</View>}
 
-			<View style={{position: 'absolute',transform: [{ translateX: botoes.pular.x }, { translateY: botoes.pular.y }] }} >
-				<Pular width={'150'} />
-			</View>
+			{botoes.atirar.show &&<View style={{position: 'absolute',transform: [{ translateX: botoes.pular.x }, { translateY: botoes.pular.y }] }} >
+				<Pular width={width * 0.11} />
+			</View>}
 
-			<View style={{position: 'absolute',transform: [{ translateX: botoes.agachar.x }, { translateY: botoes.agachar.y }] }} >
-				<Agachar width={'150'}/>
-			</View>
+			{botoes.agachar.show &&<View style={{position: 'absolute',transform: [{ translateX: botoes.agachar.x }, { translateY: botoes.agachar.y }] }} >
+				<Agachar width={width * 0.11}/>
+			</View>}
 
-			<View style={{position: 'absolute',transform: [{ translateX: botoes.atirarEsq.x }, { translateY: botoes.atirarEsq.y }] }} >
-				<Atirar width={'150'} />
-			</View>
+			{botoes.atirarEsq.show &&<View style={{position: 'absolute',transform: [{ translateX: botoes.atirarEsq.x }, { translateY: botoes.atirarEsq.y }] }} >
+				<Atirar width={width * 0.11} />
+			</View>}
 
-			<View style={{position: 'absolute',transform: [{ translateX: botoes.gel.x }, { translateY: botoes.gel.y }] }} >
-				<Gelo width={'150'} />
-			</View>
+			{botoes.gel.show &&<View style={{position: 'absolute',transform: [{ translateX: botoes.gel.x }, { translateY: botoes.gel.y }] }} >
+				<Gelo width={width * 0.11} />
+			</View>}
 
-			<View style={{position: 'absolute',transform: [{ translateX: botoes.mirar.x }, { translateY: botoes.mirar.y }] }} >
-				<Mirar width={'150'} />
-			</View>
+			{botoes.mirar.show &&<View style={{position: 'absolute',transform: [{ translateX: botoes.mirar.x }, { translateY: botoes.mirar.y }] }} >
+				<Mirar width={width * 0.11} />
+			</View>}
 
-			<View style={{position: 'absolute',transform: [{ translateX: botoes.Correr.x }, { translateY: botoes.Correr.y }] }} >
-				<Correr width={'150'} />
-			</View>
+			{botoes.Correr.show &&<View style={{position: 'absolute',transform: [{ translateX: botoes.Correr.x }, { translateY: botoes.Correr.y }] }} >
+				<Correr width={width * 0.11} />
+			</View>}
 
-			<View style={{position: 'absolute',transform: [{ translateX: botoes.Analogico.x }, { translateY: botoes.Analogico.y }] }} >
-				<Analogico width={'200'} />
-			</View>
+			{botoes.Analogico.show &&<View style={{position: 'absolute',transform: [{ translateX: botoes.Analogico.x }, { translateY: botoes.Analogico.y }] }} >
+				<Analogico width={width * 0.12} />
+			</View>}
 
-			<View style={{position: 'absolute',transform: [{ translateX: botoes.trocaArma.x }, { translateY: botoes.trocaArma.y }] }} >
-				<Trocar width={'150'} />
-			</View>
+			{botoes.trocaArma.show && <View style={{position: 'absolute',transform: [{ translateX: botoes.trocaArma.x }, { translateY: botoes.trocaArma.y }] }} >
+				<Trocar width={width * 0.11} />
+			</View>}
 		</ImageBackground>
 	);
 }
@@ -137,15 +148,4 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
-	button: {
-		borderWidth: 3,
-		borderColor: 'black',
-		backgroundColor: 'white',
-		borderRadius: 75,
-		width: 150,
-		height: 150,
-		justifyContent: 'center',
-		alignItems: 'center',
-		position: 'absolute'
-	}
 });

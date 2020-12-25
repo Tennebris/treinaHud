@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, ImageBackground, Text, View, Animated, PanResponder, LogBox, TouchableOpacity } from 'react-native';
-// import * as ScreenOrientation from 'expo-screen-orientation';
+import { StyleSheet, ImageBackground, Text, View, Animated, PanResponder, Dimensions, LogBox, TouchableOpacity } from 'react-native';
+import Slider from '@react-native-community/slider';
 
 import Pular from '../SvgBtns/pular';
 import Correr from '../SvgBtns/correr';
@@ -14,49 +14,59 @@ import Trocar from '../SvgBtns/trocaArma';
 
 LogBox.ignoreLogs(['Animated']);
 
-
 const defaultConfig = {
 	"atirar": {
-		"x": 433,
-		"y": 175
+		"show": true,
+		"x": Dimensions.get('window').width * 0.30,
+		"y": Dimensions.get('window').height * 0.28
 	},
 	"agachar": {
-		"x": 610,
-		"y": 285
+		"show": true,
+		"x": Dimensions.get('window').width * 0.40,
+		"y": Dimensions.get('window').height * 0.39
 	},
 	"pular": {
-		"x": 700,
-		"y": 165
+		"show": true,
+		"x": Dimensions.get('window').width * 0.45,
+		"y": Dimensions.get('window').height * 0.18
 	},
 	"mirar": {
-		"x": 702,
-		"y": 30
+		"show": true,
+		"x": Dimensions.get('window').width * 0.45,
+		"y": -Dimensions.get('window').height * 0.05
 	},
 	"atirarEsq": {
-		"x": -345,
-		"y": -55
+		"show": true,
+		"x": -Dimensions.get('window').width * 0.25,
+		"y": -Dimensions.get('window').height * 0.08
 	},
 	"gel": {
-		"x": -345,
-		"y": 80
+		"show": true,
+		"x": -Dimensions.get('window').width * 0.25,
+		"y": Dimensions.get('window').height * 0.15
 	},
 	"Correr": {
-		"x": -520,
-		"y": -45
+		"show": true,
+		"x": -Dimensions.get('window').width * 0.38,
+		"y": -Dimensions.get('window').height * 0.08
 	},
 	"Analogico": {
-		"x": -520,
-		"y": 250
+		"show": true,
+		"x": -Dimensions.get('window').width * 0.38,
+		"y": Dimensions.get('window').height * 0.30
 	},
 	"trocaArma": {
-		"x": -420,
-		"y": -250
+		"show": true,
+		"x": -Dimensions.get('window').width * 0.25,
+		"y": -Dimensions.get('window').height * 0.40
 	}
 }
 
 
 export default function App() {
-
+	// (async () => {
+	// 	await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
+	// })();
 
 	const savedConfig = useRef({
 		"atirar": {
@@ -351,67 +361,92 @@ export default function App() {
 	// 	}
 	// },[isDraging]);
 
+	const {width,height} = Dimensions.get('window');
+
 	return (
 		<ImageBackground style={styles.container} >
 			<StatusBar hidden={true} style="auto" />
 			<Animated.View style={{position: 'absolute',transform: [{ translateX: atirarCoord.x }, { translateY: atirarCoord.y }] }} {...atirar.panHandlers} >
-				<Atirar width={'180'} style={{ opacity: 0.8 }} />
+				<Atirar width={width * 0.11} style={{ opacity: 0.8 }} />
 			</Animated.View>
 
 			<Animated.View style={{position: 'absolute',transform: [{ translateX: pularCoord.x }, { translateY: pularCoord.y }] }} {...pular.panHandlers} >
-				<Pular width={'150'} style={{ opacity: 0.8 }} />
+				<Pular width={width * 0.11} style={{ opacity: 0.8 }} />
 			</Animated.View>
 
 			<Animated.View style={{position: 'absolute',transform: [{ translateX: agacharCoord.x }, { translateY: agacharCoord.y }] }} {...agachar.panHandlers} >
-				<Agachar width={'150'} style={{ opacity: 0.8 }}/>
+				<Agachar width={width * 0.11} style={{ opacity: 0.8 }}/>
 			</Animated.View>
 
 			<Animated.View style={{position: 'absolute',transform: [{ translateX: atirarEsqCoord.x }, { translateY: atirarEsqCoord.y }] }} {...atirarEsq.panHandlers} >
-				<Atirar width={'150'} style={{ opacity: 0.8 }} />
+				<Atirar width={width * 0.11} style={{ opacity: 0.8 }} />
 			</Animated.View>
 
 			<Animated.View style={{position: 'absolute',transform: [{ translateX: geloCoord.x }, { translateY: geloCoord.y }] }} {...gelo.panHandlers} >
-				<Gelo width={'150'} style={{ opacity: 0.8 }} />
+				<Gelo width={width * 0.11} style={{ opacity: 0.8 }} />
 			</Animated.View>
 
 			<Animated.View style={{position: 'absolute',transform: [{ translateX: mirarCoord.x }, { translateY: mirarCoord.y }] }} {...mirar.panHandlers} >
-				<Mirar width={'150'} style={{ opacity: 0.8 }} />
+				<Mirar width={width * 0.11} style={{ opacity: 0.8 }} />
 			</Animated.View>
 
 			<Animated.View style={{position: 'absolute',transform: [{ translateX: correrCoord.x }, { translateY: correrCoord.y }] }} {...correr.panHandlers} >
-				<Correr width={'150'} style={{ opacity: 0.8 }} />
+				<Correr width={width * 0.11} style={{ opacity: 0.8 }} />
 			</Animated.View>
 
 			<Animated.View style={{position: 'absolute',transform: [{ translateX: joyCoord.x }, { translateY: joyCoord.y }] }} {...joy.panHandlers} >
-				<Analogico width={'200'} style={{ opacity: 0.8 }} />
+				<Analogico width={width * 0.12} style={{ opacity: 0.8 }} />
 			</Animated.View>
 
 			<Animated.View style={{position: 'absolute',transform: [{ translateX: trocarCoord.x }, { translateY: trocarCoord.y }] }} {...trocar.panHandlers} >
-				<Trocar width={'150'} style={{ opacity: 0.8 }} />
+				<Trocar width={width * 0.11} style={{ opacity: 0.8 }} />
 			</Animated.View>
 
 			<View style={styles.modal}>
-				<TouchableOpacity
-					style={styles.btn}
-					onPress={() => {
-						atirarEsqCoord.setValue(config.atirarEsq);
-						correrCoord.setValue(config.Correr);
-						geloCoord.setValue(config.gel);
-						joyCoord.setValue(config.Analogico);
-						console.warn(joyCoord);
-						trocarCoord.setValue(config.trocaArma);
-						atirarCoord.setValue(config.atirar);
-						mirarCoord.setValue(config.mirar);
-						pularCoord.setValue(config.pular);
-						agacharCoord.setValue(config.agachar);
-					}}
-				>
-					<Text style={styles.btnText}>Redefinir</Text>
-				</TouchableOpacity>
+				<View style={styles.rangeContainer}>
+					<Text style={{fontSize: 28, fontWeight: 'bold', alignSelf: 'center', color: 'white'}} >Arraste pra mover</Text>
+					<Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}} >Transparência</Text>
+					<Slider
+						style={{width: 200, height: 40}}
+						minimumValue={0}
+						maximumValue={1}
+						minimumTrackTintColor="#FFFFFF"
+						maximumTrackTintColor="#000000"
+					/>
+					<Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}} >Tamanho</Text>
+					<Slider
+						style={{width: 200, height: 40}}
+						minimumValue={0}
+						maximumValue={1}
+						minimumTrackTintColor="#FFFFFF"
+						maximumTrackTintColor="#000000"
+					/>
+				</View>
+				<View style={styles.hor}>
+					<TouchableOpacity style={[styles.btn,{backgroundColor: 'grey'}]} >
+						<Text style={styles.btnText}>Salvar</Text>
+					</TouchableOpacity>
+					<TouchableOpacity
+						style={[styles.btn,{backgroundColor: 'grey'}]}
+						onPress={() => {
+							atirarEsqCoord.setValue(config.atirarEsq);
+							correrCoord.setValue(config.Correr);
+							geloCoord.setValue(config.gel);
+							joyCoord.setValue(config.Analogico);
+							trocarCoord.setValue(config.trocaArma);
+							atirarCoord.setValue(config.atirar);
+							mirarCoord.setValue(config.mirar);
+							pularCoord.setValue(config.pular);
+							agacharCoord.setValue(config.agachar);
+						}}
+					>
+						<Text style={styles.btnText}>Redefinir</Text>
+					</TouchableOpacity>
 
-				<TouchableOpacity style={styles.btn} >
-					<Text style={styles.btnText}>Salvar</Text>
-				</TouchableOpacity>
+					<TouchableOpacity style={[styles.btn,{backgroundColor: '#fdb800'}]} >
+						<Text style={[styles.btnText,{color: '#000'}]}>Salvar</Text>
+					</TouchableOpacity>
+				</View>
 			</View>
 		</ImageBackground>
 	);
@@ -425,40 +460,35 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
-	button: {
-		borderWidth: 3,
-		borderColor: 'black',
-		backgroundColor: 'white',
-		borderRadius: 75,
-		width: 150,
-		height: 150,
+	btn:{
+		marginHorizontal: 5,
+		paddingVertical: 5,
+		paddingHorizontal: 20,
 		justifyContent: 'center',
 		alignItems: 'center',
-		position: 'absolute'
-	},
-	btn:{
-		backgroundColor: 'lime',
-		width: '50%',
-		borderRadius: 10,
-		paddingVertical: 20,
-		marginHorizontal: 5,
-		justifyContent: 'center',
-		alignItems: 'center'
+		borderRadius: 2
 	},
 	modal:{
-		position: 'relative',
-		backgroundColor: '#000',
-		width: '20%',
-		height: '15%',
+		backgroundColor: 'transparent',
 		justifyContent: "center",
 		alignItems: "center",
+	},
+	hor:{
 		flexDirection: "row",
-		paddingHorizontal: 30,
-		borderWidth: 4,
-		borderColor: 'lime'
+		marginBottom: 5
+	},
+	rangeContainer:{
+		width: '96.7%',
+		backgroundColor: 'rgba(0,0,0,0.7)',
+		marginBottom: 10,
+		paddingHorizontal: 20,
+		paddingBottom: 20,
+		paddingTop: 10,
+		borderRadius: 2
 	},
 	btnText:{
 		fontSize: 20,
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+		color: 'white'
 	}
 });

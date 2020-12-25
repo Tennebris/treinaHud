@@ -1928,6 +1928,11 @@
     sudo-prompt "^9.0.0"
     wcwidth "^1.0.1"
 
+"@react-native-community/slider@3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-3.0.3.tgz#830167fd757ba70ac638747ba3169b2dbae60330"
+  integrity sha512-8IeHfDwJ9/CTUwFs6x90VlobV3BfuPgNLjTgC6dRZovfCWigaZwVNIFFJnHBakK3pW2xErAPwhdvNR4JeNoYbw==
+
 "@sinonjs/commons@^1.7.0":
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.8.1.tgz#e7df00f98a203324f6dc7cc606cad9d4a8ab2217"
@@ -3766,6 +3771,13 @@ expo-permissions@~9.3.0:
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-9.3.0.tgz#b90c7e9e411d306c1c7ba2bae18d5c53c201affd"
   integrity sha512-ylSJZVvEGJVFTKsFrUL2S6gCvFt+/o8TJ3xT4WaMjHe2/2Z7R8ng6NR47Kt54t7XBIV/SZ7DIY9uRiR7TPuNYA==
+
+expo-screen-orientation@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/expo-screen-orientation/-/expo-screen-orientation-2.1.0.tgz#a03e699a899362ef2b7fb05f5c4ef62cb6a95fc1"
+  integrity sha512-QH9vm39jmXij5ajcTVIdOLRWNjU177OIyu43NTJw/1CQVSThl42a7XogWhDvvSg6r2fF2w1dZlWrVFo2escTfQ==
+  dependencies:
+    fbjs "1.0.0"
 
 expo-splash-screen@^0.6.1, expo-splash-screen@~0.6.2:
   version "0.6.2"
