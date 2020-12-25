@@ -64,9 +64,8 @@ const defaultConfig = {
 
 
 export default function App() {
-	// (async () => {
-	// 	await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
-	// })();
+	const [opacity, setOpacity] = useState(0);
+	const [size, setSize] = useState(0);
 
 	const savedConfig = useRef({
 		"atirar": {
@@ -117,6 +116,7 @@ export default function App() {
 			onMoveShouldSetPanResponder: () => true,
 			onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
 			onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+			onStartShouldSetPanResponder: () => true,
 			onPanResponderGrant: () => {
 				atirarCoord.setOffset({
 					x: atirarCoord.x._value,
@@ -127,7 +127,7 @@ export default function App() {
 				setIsDraging(true);
 				atirarCoord.setValue({ x: gesture.dx, y: gesture.dy });
 			},
-			onPanResponderTerminationRequest: (evt, gestureState) => false,
+			onPanResponderTerminationRequest: (evt, gestureState) => true,
 			onPanResponderRelease: () => {
 				setIsDraging(false);
 				atirarCoord.flattenOffset();
@@ -144,6 +144,7 @@ export default function App() {
 			onMoveShouldSetPanResponder: () => true,
 			onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
 			onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+			onStartShouldSetPanResponder: () => true,
 			onPanResponderGrant: () => {
 				pularCoord.setOffset({
 					x: pularCoord.x._value,
@@ -154,7 +155,7 @@ export default function App() {
 				setIsDraging(true);
 				pularCoord.setValue({ x: gesture.dx, y: gesture.dy })
 			},
-			onPanResponderTerminationRequest: (evt, gestureState) => false,
+			onPanResponderTerminationRequest: (evt, gestureState) => true,
 			onPanResponderRelease: () => {
 				setIsDraging(false);
 				pularCoord.flattenOffset();
@@ -171,6 +172,7 @@ export default function App() {
 			onMoveShouldSetPanResponder: () => true,
 			onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
 			onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+			onStartShouldSetPanResponder: () => true,
 			onPanResponderGrant: () => {
 				correrCoord.setOffset({
 					x: correrCoord.x._value,
@@ -181,7 +183,7 @@ export default function App() {
 				setIsDraging(true);
 				correrCoord.setValue({ x: gesture.dx, y: gesture.dy })
 			},
-			onPanResponderTerminationRequest: (evt, gestureState) => false,
+			onPanResponderTerminationRequest: (evt, gestureState) => true,
 			onPanResponderRelease: () => {
 				setIsDraging(false);
 				correrCoord.flattenOffset();
@@ -198,6 +200,7 @@ export default function App() {
 			onMoveShouldSetPanResponder: () => true,
 			onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
 			onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+			onStartShouldSetPanResponder: () => true,
 			onPanResponderGrant: () => {
 				mirarCoord.setOffset({
 					x: mirarCoord.x._value,
@@ -208,7 +211,7 @@ export default function App() {
 				setIsDraging(true);
 				mirarCoord.setValue({ x: gesture.dx, y: gesture.dy })
 			},
-			onPanResponderTerminationRequest: (evt, gestureState) => false,
+			onPanResponderTerminationRequest: (evt, gestureState) => true,
 			onPanResponderRelease: () => {
 				setIsDraging(false);
 				mirarCoord.flattenOffset();
@@ -225,6 +228,7 @@ export default function App() {
 			onMoveShouldSetPanResponder: () => true,
 			onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
 			onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+			onStartShouldSetPanResponder: () => true,
 			onPanResponderGrant: () => {
 				agacharCoord.setOffset({
 					x: agacharCoord.x._value,
@@ -235,7 +239,7 @@ export default function App() {
 				setIsDraging(true);
 				agacharCoord.setValue({ x: gesture.dx, y: gesture.dy })
 			},
-			onPanResponderTerminationRequest: (evt, gestureState) => false,
+			onPanResponderTerminationRequest: (evt, gestureState) => true,
 			onPanResponderRelease: () => {
 				setIsDraging(false);
 				agacharCoord.flattenOffset();
@@ -253,6 +257,7 @@ export default function App() {
 			onMoveShouldSetPanResponder: () => true,
 			onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
 			onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+			onStartShouldSetPanResponder: () => true,
 			onPanResponderGrant: () => {
 				trocarCoord.setOffset({
 					x: trocarCoord.x._value,
@@ -263,7 +268,7 @@ export default function App() {
 				setIsDraging(true);
 				trocarCoord.setValue({ x: gesture.dx, y: gesture.dy })
 			},
-			onPanResponderTerminationRequest: (evt, gestureState) => false,
+			onPanResponderTerminationRequest: (evt, gestureState) => true,
 			onPanResponderRelease: () => {
 				setIsDraging(false);
 				trocarCoord.flattenOffset();
@@ -280,6 +285,7 @@ export default function App() {
 			onMoveShouldSetPanResponder: () => true,
 			onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
 			onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+			onStartShouldSetPanResponder: () => true,
 			onPanResponderGrant: () => {
 				joyCoord.setOffset({
 					x: joyCoord.x._value,
@@ -290,7 +296,7 @@ export default function App() {
 				setIsDraging(true);
 				joyCoord.setValue({ x: gesture.dx, y: gesture.dy })
 			},
-			onPanResponderTerminationRequest: (evt, gestureState) => false,
+			onPanResponderTerminationRequest: (evt, gestureState) => true,
 			onPanResponderRelease: () => {
 				setIsDraging(false);
 				joyCoord.flattenOffset();
@@ -307,6 +313,7 @@ export default function App() {
 			onMoveShouldSetPanResponder: () => true,
 			onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
 			onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+			onStartShouldSetPanResponder: () => true,
 			onPanResponderGrant: () => {
 				geloCoord.setOffset({
 					x: geloCoord.x._value,
@@ -317,7 +324,7 @@ export default function App() {
 				setIsDraging(true);
 				geloCoord.setValue({ x: gesture.dx, y: gesture.dy })
 			},
-			onPanResponderTerminationRequest: (evt, gestureState) => false,
+			onPanResponderTerminationRequest: (evt, gestureState) => true,
 			onPanResponderRelease: () => {
 				setIsDraging(false);
 				geloCoord.flattenOffset();
@@ -332,8 +339,9 @@ export default function App() {
 	const atirarEsq = useRef(
 		PanResponder.create({
 			onMoveShouldSetPanResponder: () => true,
-			onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
 			onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+			onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
+			onStartShouldSetPanResponder: () => true,
 			onPanResponderGrant: () => {
 				atirarEsqCoord.setOffset({
 					x: atirarEsqCoord.x._value,
@@ -344,7 +352,7 @@ export default function App() {
 				setIsDraging(true);
 				atirarEsqCoord.setValue({ x: gesture.dx, y: gesture.dy })
 			},
-			onPanResponderTerminationRequest: (evt, gestureState) => false,
+			onPanResponderTerminationRequest: (evt, gestureState) => true,
 			onPanResponderRelease: () => {
 				setIsDraging(false);
 				atirarEsqCoord.flattenOffset();
@@ -355,72 +363,80 @@ export default function App() {
 		})
 	).current;
 
-	// useEffect(() => {
-	// 	if(!isDraging){
-	// 		console.warn(savedConfig)
-	// 	}
-	// },[isDraging]);
+	useEffect(() => {
+		if(!isDraging){
+			console.warn(savedConfig)
+		}
+	},[isDraging]);
 
 	const {width,height} = Dimensions.get('window');
 
 	return (
 		<ImageBackground style={styles.container} >
 			<StatusBar hidden={true} style="auto" />
-			<Animated.View style={{position: 'absolute',transform: [{ translateX: atirarCoord.x }, { translateY: atirarCoord.y }] }} {...atirar.panHandlers} >
+			<Animated.View style={[styles.viewAnimada,{transform: [{ translateX: atirarCoord.x }, { translateY: atirarCoord.y }] }]} {...atirar.panHandlers} >
 				<Atirar width={width * 0.11} style={{ opacity: 0.8 }} />
 			</Animated.View>
 
-			<Animated.View style={{position: 'absolute',transform: [{ translateX: pularCoord.x }, { translateY: pularCoord.y }] }} {...pular.panHandlers} >
+			<Animated.View style={[styles.viewAnimada,{transform: [{ translateX: pularCoord.x }, { translateY: pularCoord.y }] }]} {...pular.panHandlers} >
 				<Pular width={width * 0.11} style={{ opacity: 0.8 }} />
 			</Animated.View>
 
-			<Animated.View style={{position: 'absolute',transform: [{ translateX: agacharCoord.x }, { translateY: agacharCoord.y }] }} {...agachar.panHandlers} >
+			<Animated.View style={[styles.viewAnimada,{transform: [{ translateX: agacharCoord.x }, { translateY: agacharCoord.y }] }]} {...agachar.panHandlers} >
 				<Agachar width={width * 0.11} style={{ opacity: 0.8 }}/>
 			</Animated.View>
 
-			<Animated.View style={{position: 'absolute',transform: [{ translateX: atirarEsqCoord.x }, { translateY: atirarEsqCoord.y }] }} {...atirarEsq.panHandlers} >
+			<Animated.View style={[styles.viewAnimada,{transform: [{ translateX: atirarEsqCoord.x }, { translateY: atirarEsqCoord.y }] }]} {...atirarEsq.panHandlers} >
 				<Atirar width={width * 0.11} style={{ opacity: 0.8 }} />
 			</Animated.View>
 
-			<Animated.View style={{position: 'absolute',transform: [{ translateX: geloCoord.x }, { translateY: geloCoord.y }] }} {...gelo.panHandlers} >
+			<Animated.View style={[styles.viewAnimada,{transform: [{ translateX: geloCoord.x }, { translateY: geloCoord.y }] }]} {...gelo.panHandlers} >
 				<Gelo width={width * 0.11} style={{ opacity: 0.8 }} />
 			</Animated.View>
 
-			<Animated.View style={{position: 'absolute',transform: [{ translateX: mirarCoord.x }, { translateY: mirarCoord.y }] }} {...mirar.panHandlers} >
+			<Animated.View style={[styles.viewAnimada,{transform: [{ translateX: mirarCoord.x }, { translateY: mirarCoord.y }] }]} {...mirar.panHandlers} >
 				<Mirar width={width * 0.11} style={{ opacity: 0.8 }} />
 			</Animated.View>
 
-			<Animated.View style={{position: 'absolute',transform: [{ translateX: correrCoord.x }, { translateY: correrCoord.y }] }} {...correr.panHandlers} >
+			<Animated.View style={[styles.viewAnimada,{transform: [{ translateX: correrCoord.x }, { translateY: correrCoord.y }] }]} {...correr.panHandlers} >
 				<Correr width={width * 0.11} style={{ opacity: 0.8 }} />
 			</Animated.View>
 
-			<Animated.View style={{position: 'absolute',transform: [{ translateX: joyCoord.x }, { translateY: joyCoord.y }] }} {...joy.panHandlers} >
-				<Analogico width={width * 0.12} style={{ opacity: 0.8 }} />
+			<Animated.View style={[styles.viewAnimada,{transform: [{ translateX: joyCoord.x }, { translateY: joyCoord.y }] }]} {...joy.panHandlers} >
+				<Analogico width={width * 0.13} style={{ opacity: 0.8 }} />
 			</Animated.View>
 
-			<Animated.View style={{position: 'absolute',transform: [{ translateX: trocarCoord.x }, { translateY: trocarCoord.y }] }} {...trocar.panHandlers} >
+			<Animated.View style={[styles.viewAnimada,{transform: [{ translateX: trocarCoord.x }, { translateY: trocarCoord.y }] }]} {...trocar.panHandlers} >
 				<Trocar width={width * 0.11} style={{ opacity: 0.8 }} />
 			</Animated.View>
 
 			<View style={styles.modal}>
 				<View style={styles.rangeContainer}>
-					<Text style={{fontSize: 28, fontWeight: 'bold', alignSelf: 'center', color: 'white'}} >Arraste pra mover</Text>
+					<Text style={{fontSize: 28, fontWeight: 'bold', alignSelf: 'center', color: 'white', paddingBottom: 10}} >Arraste pra mover</Text>
 					<Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}} >Transparência</Text>
-					<Slider
-						style={{width: 200, height: 40}}
-						minimumValue={0}
-						maximumValue={1}
-						minimumTrackTintColor="#FFFFFF"
-						maximumTrackTintColor="#000000"
-					/>
+					<View style={[styles.hor,{width: '100%', alignItems: 'center'}]}>
+						<Slider
+							style={{flex:1, height: 40}}
+							minimumValue={0}
+							maximumValue={1}
+							minimumTrackTintColor="#fdb800"
+							maximumTrackTintColor="#000000"
+							onValueChange={item => setOpacity(item)}
+							value={opacity}
+						/><Text style={{fontSize: 15, fontWeight: 'bold', color: 'white'}} >{Math.round(opacity*100)}%</Text>
+					</View>
 					<Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}} >Tamanho</Text>
-					<Slider
-						style={{width: 200, height: 40}}
-						minimumValue={0}
-						maximumValue={1}
-						minimumTrackTintColor="#FFFFFF"
-						maximumTrackTintColor="#000000"
-					/>
+					<View style={[styles.hor,{width: '100%', alignItems: 'center'}]}>
+						<Slider
+							style={{flex:1, height: 40}}
+							minimumValue={0}
+							maximumValue={1}
+							minimumTrackTintColor="#fdb800"
+							onValueChange={item => setSize(item)}
+							maximumTrackTintColor="#000000"
+							value={size}
+						/><Text style={{fontSize: 15, fontWeight: 'bold', color: 'white'}} >{Math.round(size*100)}%</Text>
+					</View>
 				</View>
 				<View style={styles.hor}>
 					<TouchableOpacity style={[styles.btn,{backgroundColor: 'grey'}]} >
@@ -472,6 +488,7 @@ const styles = StyleSheet.create({
 		backgroundColor: 'transparent',
 		justifyContent: "center",
 		alignItems: "center",
+		alignSelf: "center",
 	},
 	hor:{
 		flexDirection: "row",
@@ -482,13 +499,19 @@ const styles = StyleSheet.create({
 		backgroundColor: 'rgba(0,0,0,0.7)',
 		marginBottom: 10,
 		paddingHorizontal: 20,
-		paddingBottom: 20,
-		paddingTop: 10,
-		borderRadius: 2
+		borderRadius: 2,
 	},
 	btnText:{
 		fontSize: 20,
 		fontWeight: 'bold',
 		color: 'white'
+	},
+	viewAnimada:{
+		position: 'absolute',
+		width: Dimensions.get('window').width * 0.11,
+		height: Dimensions.get('window').width * 0.11,
+		justifyContent: 'center',
+		alignItems: 'center',
+		borderRadius: (Dimensions.get('window').width * 0.11)/2
 	}
 });
