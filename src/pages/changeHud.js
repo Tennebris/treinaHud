@@ -1,16 +1,18 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, ImageBackground, Text, View, Animated, PanResponder, Dimensions, LogBox, TouchableOpacity } from 'react-native';
+import { StyleSheet, ImageBackground, Text, View, Alert, Animated, PanResponder, Dimensions, LogBox, TouchableOpacity } from 'react-native';
 import Slider from '@react-native-community/slider';
+import AsyncStorage from '@react-native-community/async-storage';
+import { useNavigation } from '@react-navigation/native'
 
-import Pular from '../SvgBtns/pular';
-import Correr from '../SvgBtns/correr';
-import Mirar from '../SvgBtns/mirar';
-import Agachar from '../SvgBtns/agachar';
-import Atirar from '../SvgBtns/atirar';
-import Gelo from '../SvgBtns/gelo';
-import Analogico from '../SvgBtns/analogico';
-import Trocar from '../SvgBtns/trocaArma';
+import Pular from './SvgBtns/pular';
+import Correr from './SvgBtns/correr';
+import Mirar from './SvgBtns/mirar';
+import Agachar from './SvgBtns/agachar';
+import Atirar from './SvgBtns/atirar';
+import Gelo from './SvgBtns/gelo';
+import Analogico from './SvgBtns/analogico';
+import Trocar from './SvgBtns/trocaArma';
 
 LogBox.ignoreLogs(['Animated']);
 
@@ -67,47 +69,67 @@ export default function App() {
 	const [opacity, setOpacity] = useState(0);
 	const [size, setSize] = useState(0);
 
+	const nav = useNavigation();
+
 	const savedConfig = useRef({
 		"atirar": {
+			"show": true,
 			"x": 0,
 			"y": 0
 		},
 		"agachar": {
+			"show": true,
 			"x": 0,
 			"y": 0
 		},
 		"pular": {
+			"show": true,
 			"x": 0,
 			"y": 0
 		},
 		"mirar": {
+			"show": true,
 			"x": 0,
 			"y": 0
 		},
 		"atirarEsq": {
+			"show": true,
 			"x": 0,
 			"y": 0
 		},
 		"gel": {
+			"show": true,
 			"x": 0,
 			"y": 0
 		},
 		"Correr": {
+			"show": true,
 			"x": 0,
 			"y": 0
 		},
 		"Analogico": {
+			"show": true,
 			"x": 0,
 			"y": 0
 		},
 		"trocaArma": {
+			"show": true,
 			"x": 100,
 			"y": 0
 		}
 	}).current
 
-	const config = useState(defaultConfig)[0];
+	const saveHud = async (h) => {
+		try{
+			await AsyncStorage.setItem("@hud",JSON.stringify(h));
+			console.warn('gravado')
+		}catch (e){
+			console.warn('Error')
+		}
+	}
 
+	const config = useState(defaultConfig)[0];
+	const hud = useState(savedConfig)[0];
 	const [isDraging, setIsDraging] = useState(false);
 
 	const atirarCoord = useRef(new Animated.ValueXY({x: config.atirar.x, y: config.atirar.y })).current;
@@ -439,7 +461,9 @@ export default function App() {
 					</View>
 				</View>
 				<View style={styles.hor}>
-					<TouchableOpacity style={[styles.btn,{backgroundColor: 'grey'}]} >
+					<TouchableOpacity style={[styles.btn,{backgroundColor: 'grey'}]}
+						onPress={() => nav.navigate('treiner')}
+					>
 						<Text style={styles.btnText}>Salvar</Text>
 					</TouchableOpacity>
 					<TouchableOpacity
@@ -459,7 +483,9 @@ export default function App() {
 						<Text style={styles.btnText}>Redefinir</Text>
 					</TouchableOpacity>
 
-					<TouchableOpacity style={[styles.btn,{backgroundColor: '#fdb800'}]} >
+					<TouchableOpacity style={[styles.btn,{backgroundColor: '#fdb800'}]}
+						onPress={() => saveHud(hud)}
+					>
 						<Text style={[styles.btnText,{color: '#000'}]}>Salvar</Text>
 					</TouchableOpacity>
 				</View>
